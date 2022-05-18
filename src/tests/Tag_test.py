@@ -3,7 +3,7 @@ import os
 import unittest
 
 sys.path.append(os.path.abspath('..'))
-from drawioartisan.template.Tag import Tag
+from TagTree.template.Tag import Tag
 
 class TagTest(unittest.TestCase):
     def test_returnFormattedTag(self):

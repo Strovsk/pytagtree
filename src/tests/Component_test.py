@@ -3,7 +3,7 @@ import os
 import unittest
 
 sys.path.append(os.path.abspath('..'))
-from drawioartisan.template.Component import Component
+from TagTree.template.Component import Component
 
 
 class ComponentTest(unittest.TestCase):
