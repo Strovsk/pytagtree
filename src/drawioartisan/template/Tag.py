@@ -10,9 +10,9 @@ class Tag(Component):
         self.maxLenLine = maxLenLine
     
     def genContent(self):
-        # Cria uma lista de parâmetros
+        # Create the params List
         formattedParams = self.getFormattedParams()
-        # Adciona a lista de parâmetros
+        # Add the params list
         self._Component__content += formattedParams
         return super().genContent()
     
