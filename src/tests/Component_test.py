@@ -8,21 +8,21 @@ from drawioartisan.template.Component import Component
 
 class ComponentTest(unittest.TestCase):
     def test_returnSelfClosedWithOneChildren(self):
+        # Should return right format when dont have children
         comp = Component('1', 0)
         expectedComponent = '<Component 1 />'
-        print('Should return right format when dont have children')
         self.assertEqual(comp.genContent(), expectedComponent)
     
     def test_rightFormat(self):
+        # Should return right format when have chlidren
         comp1 = Component('1')
         comp2 = Component('2')
         comp1.push(comp2)
-        print('Should return right format when have chlidren')
         expectedComponentTree = '<Component 1>\n  <Component 2 />\n</Component 1>'
         self.assertEqual(comp1.genContent(), expectedComponentTree)
     
     def test_indentationUpdate(self):
-        print('Should update the indentation when children are added')
+        # Should update the indentation when children are added
         comp1 = Component('1')
         comp2 = Component('2')
         oldIndent = comp2._Component__indentation

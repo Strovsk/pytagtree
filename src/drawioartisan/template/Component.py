@@ -3,7 +3,7 @@ import re
 class Component:
     def __init__(self, treeId, indentation = 0):
         self.children = []
-        self.__contentBase = 'Component ' + str(treeId)
+        self.__contentBase = f'Component id="{str(treeId)}"'
         # self.__content = self.__contentBase
         self.__content = ''
         self.__indentation = indentation
@@ -34,7 +34,7 @@ class Component:
                 re.sub(
                     r'^(.*)',
                     f'{indent}<\g<1> />',
-                    self.__contentBase,
+                    self.__contentBase + self.__content,
                     0,
                     re.M
                 )
@@ -45,6 +45,6 @@ class Component:
                 '\n' +
                 child.genContent()
             )
-        firstTagPart = f'{self.__renderIndentation()}<{self.__contentBase}>'
+        firstTagPart = f'{self.__renderIndentation()}<{self.__contentBase + self.__content}>'
         endTag = f'\n{self.__renderIndentation()}</{self.__contentBase}>'
         return firstTagPart + buffer + endTag
