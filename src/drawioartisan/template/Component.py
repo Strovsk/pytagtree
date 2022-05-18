@@ -1,9 +1,9 @@
 import re
 
 class Component:
-    def __init__(self, treeId, indentation = 0):
+    def __init__(self, ComponentName = 'Component', indentation = 0):
         self.children = []
-        self.__contentBase = f'Component id="{str(treeId)}"'
+        self.__contentBase = ComponentName
         # self.__content = self.__contentBase
         self.__content = ''
         self.__indentation = indentation
@@ -12,8 +12,10 @@ class Component:
         item.addIndentation(self.__indentation)
         self.children.append(item)
     
-    def __renderIndentation(self):
-        return ''.join(['  ' for i in range(self.__indentation)])
+    def __renderIndentation(self, size = -1):
+        if size == -1:
+            return ''.join(['  ' for i in range(self.__indentation)])
+        return ''.join(['  ' for i in range(size)])
     
     def addIndentation(self, fatherIndentation):
         self.__indentation = fatherIndentation + 1
