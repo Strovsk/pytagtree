@@ -1,7 +1,7 @@
 from .Component import Component
 
 class Tag(Component):
-    def __init__(self, id: str, tagName: str, params: list, maxLenLine: int, indentation=0):
+    def __init__(self, tagName: str, id: str, params: list, maxLenLine: int, indentation=0):
         super().__init__(tagName, indentation)
         self.tagName = tagName
         self.id = id
@@ -11,11 +11,8 @@ class Tag(Component):
     
     def genContent(self):
         # Cria uma lista de parâmetros
-        # formattedParams = [
-        #     f'{f[0]}="{f[1]}"' for f in self.params
-        # ]
         formattedParams = self.getFormattedParams()
-        # Adciona a lista de parâmetros após o id
+        # Adciona a lista de parâmetros
         self._Component__content += formattedParams
         return super().genContent()
     
@@ -28,9 +25,8 @@ class Tag(Component):
             indent = self._Component__renderIndentation(self._Component__indentation + 1)
             formattedParams = f'\n{indent}'.join(formattedParams)
             formattedParams = f'\n{indent}' + formattedParams
-            formattedParams += '\n'
+            formattedParams += f'\n{self._Component__renderIndentation()}'
         else:
             formattedParams = ' '.join(formattedParams)
-            formattedParams = ' ' + formattedParams
-        print('result ', formattedParams)
+            formattedParams = ' ' + formattedParams + ' '
         return formattedParams
