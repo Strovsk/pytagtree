@@ -16,3 +16,12 @@ class Tag(Component):
         # Adciona a lista de parâmetros após o id
         self._Component__content += ' ' + ' '.join(formattedParams)
         return super().genContent()
+    
+    def getFormattedParams(self):
+        formattedParams = [
+            f'{f[0]}="{f[1]}"' for f in self.params
+        ]
+        formattedParamsLen = len(' '.join(formattedParams))
+        if formattedParamsLen >= self.maxLenLine:
+            '\n'.join(formattedParams.split(' '))
+        return formattedParams
