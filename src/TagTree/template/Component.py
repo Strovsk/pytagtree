@@ -35,15 +35,6 @@ class Component:
         if len(self.children) == 0:
             indent = self.__renderIndentation()
             return f'{indent}<{self.__contentBase + self.__content}/>'
-            # return (
-            #     re.sub(
-            #         r'^(.*)',
-            #         f'{indent}<\g<1> />',
-            #         self.__contentBase + self.__content,
-            #         0,
-            #         re.M
-            #     )
-            # )
         buffer = ''
         for child in self.children:
             buffer += (
