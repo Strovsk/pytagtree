@@ -10,14 +10,14 @@ class ComponentTest(unittest.TestCase):
     def test_returnSelfClosedWithOneChildren(self):
         comp = Component('1', 0)
         expectedComponent = '<Component 1 />'
-        print('Should return current format when dont have children')
+        print('Should return right format when dont have children')
         self.assertEqual(comp.genContent(), expectedComponent)
     
     def test_rightFormat(self):
         comp1 = Component('1')
         comp2 = Component('2')
         comp1.push(comp2)
-        print('Should return current format with chlidren')
+        print('Should return right format when have chlidren')
         expectedComponentTree = '<Component 1>\n  <Component 2 />\n</Component 1>'
         self.assertEqual(comp1.genContent(), expectedComponentTree)
     
