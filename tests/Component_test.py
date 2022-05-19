@@ -2,7 +2,7 @@ import sys
 import os
 import unittest
 
-sys.path.append(os.path.abspath('..'))
+sys.path.append(os.path.abspath('../src'))
 from TagTree.template.Component import Component
 
 
