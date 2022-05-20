@@ -1,7 +1,7 @@
 from .Component import Component
 
 class Tag(Component):
-    def __init__(self, tagName: str, id: str, params: list, maxLenLine: int, indentation=0, noSlashAtEnd = False, hideId = False):
+    def __init__(self, tagName: str, id: str, params: list, maxLenLine: int, indentation=2, noSlashAtEnd = False, hideId = False):
         super().__init__(tagName, indentation, 0, noSlashAtEnd)
         self.tagName = tagName
         self.id = id
@@ -13,7 +13,10 @@ class Tag(Component):
                 self.params.append(param)
             else:
                 self.noValueParams.append(param)
-        self.params.insert(0, ('id', id))
+
+        if not hideId:
+            self.params.insert(0, ('id', id))
+
         self.maxLenLine = maxLenLine
     
     def genContent(self):
