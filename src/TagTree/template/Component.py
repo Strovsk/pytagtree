@@ -1,8 +1,6 @@
 import re
 
-# TODO accept tags wich selfclose has no "/"
 # TODO Accept to load content with value. Ex: "<h1 params>content</h1>"
-# TODO add an hideIdFromParams. Because tags like <DOCTYPE> no need id
 
 class Component:
     def __init__(self, ComponentName = 'Component', indentationSize = 2, indentation = 0, noSlashAtEnd = False):
