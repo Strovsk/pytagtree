@@ -1,13 +1,18 @@
 import re
 
+# TODO accept tags wich selfclose has no "/"
+# TODO Accept to load content with value. Ex: "<h1 params>content</h1>"
+# TODO add an hideIdFromParams. Because tags like <DOCTYPE> no need id
+
 class Component:
-    def __init__(self, ComponentName = 'Component', indentationSize = 2, indentation = 0):
+    def __init__(self, ComponentName = 'Component', indentationSize = 2, indentation = 0, noSlashAtEnd = False):
         self.children = []
         self.__contentBase = ComponentName
         # self.__content = self.__contentBase
         self.__content = ''
         self.__indentation = indentation
         self.indentationSize = indentationSize
+        self.hasSlashAtEnd = not noSlashAtEnd
     
     def push(self, item):
         item.addIndentation(self.__indentation)
@@ -34,7 +39,11 @@ class Component:
     def genContent(self):
         if len(self.children) == 0:
             indent = self.__renderIndentation()
-            return f'{indent}<{self.__contentBase + self.__content}/>'
+            if self.hasSlashAtEnd: 
+                finalDecorator = '/>'
+            else:
+                finalDecorator = '>'
+            return f'{indent}<{self.__contentBase + self.__content}{finalDecorator}'
         buffer = ''
         for child in self.children:
             buffer += (
