@@ -5,7 +5,13 @@ class Tag(Component):
         super().__init__(tagName, indentation)
         self.tagName = tagName
         self.id = id
-        self.params = params
+        self.params = []
+        self.noValueParams = []
+        for param in params:
+            if type(param) == tuple:
+                self.params.append(param)
+            else:
+                self.noValueParams.append(param)
         self.params.insert(0, ('id', id))
         self.maxLenLine = maxLenLine
     
@@ -20,6 +26,9 @@ class Tag(Component):
         formattedParams = [
             f'{f[0]}="{f[1]}"' for f in self.params
         ]
+        for noValueParam in self.noValueParams:
+            formattedParams.append(noValueParam)
+
         formattedParamsLen = len(' '.join(formattedParams)) + len(self.tagName)
         if formattedParamsLen >= self.maxLenLine:
             indent = self._Component__renderIndentation(self._Component__indentation + 1)
