@@ -27,6 +27,9 @@ class Tag(Component):
         return super().genContent()
     
     def getFormattedParams(self):
+        if len(self.params) == 0:
+            return ''
+
         formattedParams = [
             f'{f[0]}="{f[1]}"' for f in self.params
         ]
