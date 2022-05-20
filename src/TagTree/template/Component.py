@@ -40,7 +40,7 @@ class Component:
         if len(self.children) == 0:
             indent = self.__renderIndentation()
             if self.hasSlashAtEnd: 
-                finalDecorator = '/>'
+                finalDecorator = ' />'
             else:
                 finalDecorator = '>'
             return f'{indent}<{self.__contentBase + self.__content}{finalDecorator}'

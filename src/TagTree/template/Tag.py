@@ -1,10 +1,11 @@
 from .Component import Component
 
 class Tag(Component):
-    def __init__(self, tagName: str, id: str, params: list, maxLenLine: int, indentation=0, noSlashAtEnd = False):
+    def __init__(self, tagName: str, id: str, params: list, maxLenLine: int, indentation=0, noSlashAtEnd = False, hideId = False):
         super().__init__(tagName, indentation, 0, noSlashAtEnd)
         self.tagName = tagName
         self.id = id
+        self.hideId = hideId
         self.params = []
         self.noValueParams = []
         for param in params:
@@ -37,5 +38,5 @@ class Tag(Component):
             formattedParams += f'\n{self._Component__renderIndentation()}'
         else:
             formattedParams = ' '.join(formattedParams)
-            formattedParams = ' ' + formattedParams + ' '
+            formattedParams = ' ' + formattedParams
         return formattedParams
