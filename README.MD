@@ -126,6 +126,44 @@ To understand the basic params used in the first example:
 
 There are more tag props, you can see then [tag props section](#tagParams)
 
+# Inserting tags
+
+The tags have a parent-child system. So, you can push or pop childrens from parent tag. See the example:
+```python
+from tagTree import Tag
+
+parentTag = Tag(
+    tagName = 'div',
+    id = 'parentId',
+    params = [('class', 'buttonContainerDiv')],
+    maxLenLine = 200, # 200 characteres
+    indentation = 2, # indendation size in spaces
+)
+
+childTag = Tag(
+    tagName = 'button',
+    id = 'childId',
+    params = [
+        ('onClick', 'foo();'),
+        ('type', 'button'),
+        'disabled'
+    ],
+    innerText = 'Click me',
+    maxLenLine = 200, # 200 characteres
+    indentation = 2, # indendation size in spaces
+)
+
+parentTag.push(childTag)
+
+print(parentTag.genContent())
+```
+The Output:
+```html
+<div id="parentId" class="buttonContainerDiv">
+  <button id="childId" onClick="foo();" type="button" disabled>Click me</button>
+</div>
+```
+
 <h1 id="tagParams">Tag props</h1>
 
 - `tagName`:
