@@ -2,3 +2,4 @@
 .venv
 main.py
 Assets/Logo.ai
+**/__pycache__
