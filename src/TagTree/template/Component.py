@@ -3,7 +3,7 @@ import re
 # TODO Accept to load content with value. Ex: "<h1 params>content</h1>"
 
 class Component:
-    def __init__(self, ComponentName = 'Component', indentationSize = 2, indentation = 0, noSlashAtEnd = False):
+    def __init__(self, ComponentName = 'Component', componentValue = '', indentationSize = 2, indentation = 0, noSlashAtEnd = False):
         self.children = []
         self.__contentBase = ComponentName
         # self.__content = self.__contentBase
@@ -11,6 +11,7 @@ class Component:
         self.__indentation = indentation
         self.indentationSize = indentationSize
         self.hasSlashAtEnd = not noSlashAtEnd
+        self.componentValue = componentValue
     
     def push(self, item):
         item.addIndentation(self.__indentation)
@@ -42,12 +43,13 @@ class Component:
             else:
                 finalDecorator = '>'
             return f'{indent}<{self.__contentBase + self.__content}{finalDecorator}'
+        firstTagPart = f'{self.__renderIndentation()}<{self.__contentBase + self.__content}>'
+        endTag = f'\n{self.__renderIndentation()}</{self.__contentBase}>'
+        # if len()
         buffer = ''
         for child in self.children:
             buffer += (
                 '\n' +
                 child.genContent()
             )
-        firstTagPart = f'{self.__renderIndentation()}<{self.__contentBase + self.__content}>'
-        endTag = f'\n{self.__renderIndentation()}</{self.__contentBase}>'
         return firstTagPart + buffer + endTag

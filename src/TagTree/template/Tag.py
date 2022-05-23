@@ -1,8 +1,8 @@
 from .Component import Component
 
 class Tag(Component):
-    def __init__(self, tagName: str, id: str, params: list, maxLenLine: int, indentation=2, noSlashAtEnd = False, hideId = False):
-        super().__init__(tagName, indentation, 0, noSlashAtEnd)
+    def __init__(self, tagName: str, id: str, params: list, maxLenLine: int, indentation=2, value = '', noSlashAtEnd = False, hideId = False):
+        super().__init__(tagName, value, indentation, 0, noSlashAtEnd)
         self.tagName = tagName
         self.id = id
         self.hideId = hideId
