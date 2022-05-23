@@ -94,7 +94,7 @@ The Output will be a formatted string:
 # Usage
 
 ## The default Tag
-By default, all tags need an id, but you can hide it at final result. All tags are also self-closed.
+By default, all tags need an id and it'll appears in final content, but you can hide it at final result. All tags are also self-closed.
 
 ```python
 from tagTree import Tag
@@ -127,3 +127,50 @@ To understand the basic params used in the first example:
 There are more tag props, you can see then [tag props section](#tagParams)
 
 <h1 id="tagParams">Tag props</h1>
+
+- `tagName`:
+    - description
+        - The tag name
+    - default: None
+    - type: string
+    - example
+        - `'button'`, `'MxCell'`
+- `id`:
+    - description
+        - The tag Id
+    - default: None
+    - type: string
+    - example
+        - `'myTagId'`
+- `params`:
+    - description
+        - A list with all tag parameters that can be tuples/lists with `(param, value)` model or simple string `param`
+    - default: None
+    - type: list
+    - example
+        - `[('type', 'button'), 'disabled', ('onClick', 'foo();')]`
+- `maxLenLine`:
+    - description
+        - The max length of generated line
+    - default: None
+    - type: int
+- `indentation`:
+    - description
+        - The size of indentation in spaces
+    - default: 2
+    - type: int
+- `innerText`:
+    - description
+        - The inner text value of tag
+    - default: ''
+    - type: string
+- `noSlashAtEnd`:
+    - description
+        - If true, show '>' at end of self-closed tags instead '/>'
+    - default: False
+    - type: bool
+- `hideId`: False
+    - description
+        - If true, remove the id from tag params at final result
+    - default: False
+    - type: bool
