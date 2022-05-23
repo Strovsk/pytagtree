@@ -97,5 +97,8 @@ class TagTest(unittest.TestCase):
 
         self.assertEqual(main.genContent(), expected)
 
+    def test_returnRightSpaceAtEnd(self):
+        pass
+
 if __name__ == '__main__':
     unittest.main()
