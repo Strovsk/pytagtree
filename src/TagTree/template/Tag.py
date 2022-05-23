@@ -44,7 +44,7 @@ class Tag(Component):
             indent = self._Component__renderIndentation(self._Component__indentation + 1)
             formattedParams = f'\n{indent}'.join(formattedParams)
             formattedParams = f'\n{indent}' + formattedParams
-            formattedParams += f'\n{self._Component__renderIndentation()}\b'
+            formattedParams += f'\n{self._Component__renderIndentation()}'
         else:
             formattedParams = ' '.join(formattedParams)
             formattedParams = ' ' + formattedParams

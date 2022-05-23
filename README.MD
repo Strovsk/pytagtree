@@ -1,6 +1,6 @@
 # TagTree
 
-![TagTree](./Assets/Logo.png?raw=True "TagTree")
+![TagTree](./Assets/Logo.png)
 
 TagTree is a useful package that provides you to write and generate markup files using Python with a Component like structure. You can generate entire markup files like xml or html from automatic tasks.
 The package source code is available on [this github repo](https://github.com/Strovsk/pytagtree)
@@ -84,7 +84,7 @@ The Output will be a formatted string:
       buttonParam="paramValue"
       anotherButtonParam="anotherParamValue"
       disabled
-   >
+    >
       click me
     </button>
   </body>
