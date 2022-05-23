@@ -1,5 +1,5 @@
 from .Component import Component
-
+import os
 class Tag(Component):
     def __init__(self, tagName: str, id: str, params: list, maxLenLine: int, indentation=2, innerText = '', noSlashAtEnd = False, hideId = False):
         super().__init__(tagName, indentation, 0, noSlashAtEnd)
@@ -9,6 +9,7 @@ class Tag(Component):
         self.innerText = innerText
         self.params = []
         self.noValueParams = []
+        self.parent = self.id
         for param in params:
             if type(param) == tuple:
                 self.params.append(param)
@@ -60,3 +61,8 @@ class Tag(Component):
             childIndent = self._Component__renderIndentation(indent + 1)
             buffer = f'\n{childIndent}{buffer}\n{self._Component__renderIndentation()}'
         return buffer
+    
+    def push(self, item):
+        if item.id == self.id or item.id == self.parent: return -1
+        item.parent = self.id
+        super().push(item)
