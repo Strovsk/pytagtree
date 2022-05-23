@@ -36,6 +36,12 @@ class Component:
             child.removeIndentation(self.__indentation)
     
     def genContent(self):
+        firstTagPart = f'{self.__renderIndentation()}<{self.__contentBase + self.__content}>'
+        endTag = f'</{self.__contentBase}>'
+
+        if len(self.componentValue) != 0 and len(self.children) == 0:
+            return firstTagPart + self.componentValue + endTag
+
         if len(self.children) == 0:
             indent = self.__renderIndentation()
             if self.hasSlashAtEnd: 
@@ -43,13 +49,15 @@ class Component:
             else:
                 finalDecorator = '>'
             return f'{indent}<{self.__contentBase + self.__content}{finalDecorator}'
-        firstTagPart = f'{self.__renderIndentation()}<{self.__contentBase + self.__content}>'
-        endTag = f'\n{self.__renderIndentation()}</{self.__contentBase}>'
-        # if len()
+
+        endTag = f'\n{self.__renderIndentation()}' + endTag
         buffer = ''
         for child in self.children:
             buffer += (
                 '\n' +
                 child.genContent()
             )
-        return firstTagPart + buffer + endTag
+        formattedValue = ''
+        if len(self.componentValue) > 0:
+            formattedValue = f'\n{self.__renderIndentation(self.__indentation + 1)}{self.componentValue}'
+        return firstTagPart + formattedValue + buffer + endTag
