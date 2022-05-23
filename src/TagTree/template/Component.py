@@ -17,6 +17,14 @@ class Component:
         item.addIndentation(self.__indentation)
         self.children.append(item)
     
+    def pop(self, id: str):
+        for i in range(len(self.children)):
+            if self.children[i].id == id:
+                self.children[i].removeIndentation(self.__indentation)
+                del self.children[i]
+                return 0
+        return -1
+
     def __renderIndentation(self, size = -1):
         if size == -1:
             return ''.join([''.join([' ' for j in range(self.indentationSize)]) for i in range(self.__indentation)])
