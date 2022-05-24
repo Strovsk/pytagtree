@@ -26,12 +26,14 @@ class Tag(Component):
         # Create the params List
         formattedParams = self.getFormattedParams()
         # Add the params list
+        self._Component__content = ''
         self._Component__content += formattedParams
         self.componentValue = self.getFormattedValue()
         return super().genContent()
     
     def getFormattedParams(self):
         if len(self.params) == 0 and len(self.noValueParams) == 0:
+            if self.hasSlashAtEnd: return ' '
             return ''
 
         formattedParams = [
@@ -43,16 +45,20 @@ class Tag(Component):
         formattedParamsLen = len(' '.join(formattedParams)) + self.lenFormattedSize
         if formattedParamsLen >= self.maxLenLine:
             indent = self._Component__renderIndentation(self._Component__indentation + 1)
+            # format the params list to breaked param list
             formattedParams = f'\n{indent}'.join(formattedParams)
             formattedParams = f'\n{indent}' + formattedParams
             formattedParams += f'\n{self._Component__renderIndentation()}'
         else:
             formattedParams = ' '.join(formattedParams)
             formattedParams = ' ' + formattedParams
+            if self.hasSlashAtEnd:
+                formattedParams += ' '
         self.lenFormattedSize += len(formattedParams)
         return formattedParams
     
     def getFormattedValue(self):
+        if self.innerText == '': return ''
         buffer = self.innerText
         if self.lenFormattedSize + len(self.innerText) >= self.maxLenLine or (
             self.lenFormattedSize >= self.maxLenLine
