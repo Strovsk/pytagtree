@@ -32,7 +32,9 @@ def getContentModel(testId):
         "paramsTagBreak": tagstestlist[16],
         "paramsTagBreakSlash": tagstestlist[17],
         "paramsTagBreakId": tagstestlist[18],
-        "paramsTagBreakIdSlash": tagstestlist[19]
+        "paramsTagBreakIdSlash": tagstestlist[19],
+        "params2TagBreakId": tagstestlist[20],
+        "params2TagBreakIdSlash": tagstestlist[21]
     })[testId]
 
 def digestTestName(testName):
@@ -331,6 +333,36 @@ class TagTest(unittest.TestCase):
             tagName='tag',
             id='tagId',
             params=[('key', 'value'), 'param'],
+            maxLenLine=0,
+            indentation=2,
+            hideId=False,
+            noSlashAtEnd=False
+        )
+        self.assertEqual(tagTest.genContent(), data)
+        pass
+
+    def test_tag_has_right_format_id_21(self):
+        '''Self closed Tag have right format (id, no slash, params, break)'''
+        data = getContentModel('params2TagBreakId')
+        tagTest = Tag(
+            tagName='tag',
+            id='tagId',
+            params=[('key', 'value'), 'param', 'param2'],
+            maxLenLine=0,
+            indentation=2,
+            hideId=False,
+            noSlashAtEnd=True
+        )
+        self.assertEqual(tagTest.genContent(), data)
+        pass
+
+    def test_tag_has_right_format_id_22(self):
+        '''Self closed Tag have right format (id, slash, params, break)'''
+        data = getContentModel('params2TagBreakIdSlash')
+        tagTest = Tag(
+            tagName='tag',
+            id='tagId',
+            params=[('key', 'value'), 'param', 'param2'],
             maxLenLine=0,
             indentation=2,
             hideId=False,
