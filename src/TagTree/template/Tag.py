@@ -36,8 +36,9 @@ class Tag(Component):
         return super().genContent()
     
     def getFormattedParams(self):
+        # FIXME 23 and 24 tests
         if len(self.params) == 0 and len(self.noValueParams) == 0:
-            if self.hasSlashAtEnd: return ' '
+            if self.hasSlashAtEnd: return ' ' # <- FIXME here
             return ''
 
         formattedParams = [
