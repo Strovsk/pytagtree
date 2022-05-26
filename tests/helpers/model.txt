@@ -6,10 +6,10 @@
 6. [<tag key="value" />]
 7. [<tag key="value" param>]
 8. [<tag key="value" param />]
-9. [<tag id="value" key="value2" param>]
-10. [<tag id="value" key="value2" param />]
-11. [<tag id="value" key="value2" param param2>]
-12.[<tag id="value" key="value2" param param2 />]
+9. [<tag id="tagId" key="value" param>]
+10. [<tag id="tagId" key="value" param />]
+11. [<tag id="tagId" key="value" param param2>]
+12.[<tag id="tagId" key="value" param param2 />]
 
 13. [<tag
 >]
