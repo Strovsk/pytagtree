@@ -34,7 +34,9 @@ def getContentModel(testId):
         "paramsTagBreakId": tagstestlist[18],
         "paramsTagBreakIdSlash": tagstestlist[19],
         "params2TagBreakId": tagstestlist[20],
-        "params2TagBreakIdSlash": tagstestlist[21]
+        "params2TagBreakIdSlash": tagstestlist[21],
+        "paramTagValue": tagstestlist[22],
+        "paramTagBreakValue": tagstestlist[23]
     })[testId]
 
 def digestTestName(testName):
@@ -367,6 +369,39 @@ class TagTest(unittest.TestCase):
             indentation=2,
             hideId=False,
             noSlashAtEnd=False
+        )
+        self.assertEqual(tagTest.genContent(), data)
+        pass
+
+    # FIXME
+    def test_tag_has_right_format_id_23(self):
+        '''Self closed Tag have right format (id, slash, params, break)'''
+        data = getContentModel('paramTagValue')
+        tagTest = Tag(
+            tagName='tag',
+            id='tagId',
+            params=[],
+            maxLenLine=160,
+            indentation=2,
+            hideId=True,
+            noSlashAtEnd=True,
+            innerText='value'
+        )
+        self.assertEqual(tagTest.genContent(), data)
+        pass
+    # FIXME
+    def test_tag_has_right_format_id_24(self):
+        '''Self closed Tag have right format (id, slash, params, break)'''
+        data = getContentModel('paramTagBreakValue')
+        tagTest = Tag(
+            tagName='tag',
+            id='tagId',
+            params=[],
+            maxLenLine=0,
+            indentation=2,
+            hideId=True,
+            noSlashAtEnd=True,
+            innerText='too long value value'
         )
         self.assertEqual(tagTest.genContent(), data)
         pass
