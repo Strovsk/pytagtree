@@ -1,16 +1,25 @@
 import sys
 import os
 import unittest
+import re
 
 sys.path.append(os.path.abspath('../src'))
 from TagTree.template.Tag import Tag
 
-def getContentModel():
-    path = f'./helpers/tagFileModel.model.html'
+def getContentModel(testId):
+    path = f'./helpers/model.txt'
     file = open(path, 'r')
-    data = [f[:-1] for f in file.readlines()]
+    data = file.read()
     file.close()
-    return data
+    tagstestlist = re.findall(r'\[(.*?)\]', data, re.DOTALL | re.MULTILINE)
+    return ({
+        "emptyTag": tagstestlist[0],
+        "emptyTagSlash": tagstestlist[1],
+        "paramTag": tagstestlist[2],
+        "paramTagSlash": tagstestlist[3],
+        "paramValueTag": tagstestlist[4],
+        "paramValueTagSlash": tagstestlist[5]
+    })[testId]
 
 def digestTestName(testName):
     replaced = testName.replace('_', ' ')
@@ -18,70 +27,90 @@ def digestTestName(testName):
 
 class TagTest(unittest.TestCase):
     def test_closed_tag_have_no_slash_id_1(self):
-        '''Self closed Tag have right format (only one no value param, hidden id, no slash)'''
-        data = getContentModel()[0]
+        '''Self closed Tag have right format (no id, no slash, no params)'''
+        data = getContentModel('emptyTag')
         tagTest = Tag(
-            '!DOCTYPE',
-            'doctypeId',
-            ['html'],
-            90,
-            2,
-            '',
-            True,
-            True
+            tagName='tag',
+            id='tagId',
+            params=[],
+            maxLenLine=5,
+            indentation=2,
+            noSlashAtEnd=True,
+            hideId=True
         )
         self.assertEqual(tagTest.genContent(), data)
         pass
 
     def test_closed_tag_have_no_slash_id_2(self):
-        '''Self closed Tag have right format (slash, value params and no value params)'''
-        data = getContentModel()[12][4:]
+        '''Self closed Tag have right format (no id, slash, no params)'''
+        data = getContentModel('emptyTagSlash')
         tagTest = Tag(
-            'img',
-            'imgId',
-            [
-                ('src', '../../Assets/Logo.png'),
-                ('alt', 'TagTree Logo'),
-                'fakeParamA',
-                'fakeParamB' 
-            ],
-            255,
-            2,
-            '',
-            False,
-            True
+            tagName='tag',
+            id='tagId',
+            params=[],
+            maxLenLine=5,
+            indentation=2,
+            hideId=True
         )
         self.assertEqual(tagTest.genContent(), data)
         pass
-    
+
     def test_closed_tag_have_no_slash_id_3(self):
-        '''Self closed Tag have right format (empty tag)'''
-        data = getContentModel()[11][2:]
+        '''Self closed Tag have right format (no id, no slash, one param)'''
+        data = getContentModel('paramTag')
         tagTest = Tag(
-            'body',
-            'bodyId',
-            [],
-            255,
-            2,
-            '',
-            True,
-            True
+            tagName='tag',
+            id='tagId',
+            params=[('param')],
+            maxLenLine=25,
+            indentation=2,
+            hideId=True,
+            noSlashAtEnd=True
         )
         self.assertEqual(tagTest.genContent(), data)
         pass
 
     def test_closed_tag_have_no_slash_id_4(self):
-        '''Self closed Tag have right format (only slash)'''
-        data = getContentModel()[18][4:]
+        '''Self closed Tag have right format (no id, slash, one param)'''
+        data = getContentModel('paramTag')
         tagTest = Tag(
-            'input',
-            'inputId',
-            [],
-            255,
-            2,
-            '',
-            False,
-            True
+            tagName='tag',
+            id='tagId',
+            params=[('param')],
+            maxLenLine=25,
+            indentation=2,
+            hideId=True,
+            noSlashAtEnd=True
+        )
+        self.assertEqual(tagTest.genContent(), data)
+        pass
+
+    def test_closed_tag_have_no_slash_id_5(self):
+        '''Self closed Tag have right format (no id, no slash, value param)'''
+        data = getContentModel('paramValueTag')
+        tagTest = Tag(
+            tagName='tag',
+            id='tagId',
+            params=[('key', 'value')],
+            maxLenLine=25,
+            indentation=2,
+            hideId=True,
+            noSlashAtEnd=True
+        )
+        self.assertEqual(tagTest.genContent(), data)
+        pass
+
+    def test_closed_tag_have_no_slash_id_6(self):
+        '''Self closed Tag have right format (no id, slash, value param)'''
+        data = getContentModel('paramValueTagSlash')
+        tagTest = Tag(
+            tagName='tag',
+            id='tagId',
+            params=[('key', 'value')],
+            maxLenLine=25,
+            indentation=2,
+            hideId=True,
+            noSlashAtEnd=False
         )
         self.assertEqual(tagTest.genContent(), data)
         pass
