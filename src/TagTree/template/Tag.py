@@ -2,11 +2,15 @@ from .Component import Component
 import os
 class Tag(Component):
     def __init__(self, tagName: str, id: str, params: list, maxLenLine: int, indentation=2, innerText = '', noSlashAtEnd = False, hideId = False):
-        super().__init__(tagName, indentation, 0, noSlashAtEnd)
+        self.innerText = innerText
+        if self.innerText:
+            noSlashProccess = not noSlashAtEnd
+        else:
+            noSlashProccess = noSlashAtEnd
+        super().__init__(tagName, indentation, 0, noSlashProccess)
         self.tagName = tagName
         self.id = id
         self.hideId = hideId
-        self.innerText = innerText
         self.params = []
         self.noValueParams = []
         self.parent = self.id
