@@ -6,10 +6,57 @@
 [<tag key="value" />]
 [<tag key="value" param>]
 [<tag key="value" param />]
-[<tag key="value" key2="value2" param>]
-[<tag key="value" key2="value2"  param />]
-[<tag key="value" key2="value2" param param2>]
-[<tag key="value" key2="value2"  param param2 />]
+[<tag id="value" key="value2" param>]
+[<tag id="value" key="value2" param />]
+[<tag id="value" key="value2" param param2>]
+[<tag id="value" key="value2" param param2 />]
+
+[<tag
+>]
+[<tag
+/>]
+[<tag
+  param
+>]
+[<tag
+  param
+/>]
+[<tag
+  key="value"
+>]
+[<tag
+  key="value"
+/>]
+[<tag
+  key="value"
+  param
+>]
+[<tag
+  key="value"
+  param
+/>]
+[<tag
+  key="value"
+  key2="value2"
+  param
+>]
+[<tag
+  key="value"
+  key2="value2"
+  param
+/>]
+[<tag
+  key="value"
+  key2="value2"
+  param
+  param2
+>]
+[<tag
+  key="value"
+  key2="value2"
+  param
+  param2
+/>]
 
 [<tag>value</tag>]
 [<tag>
@@ -21,14 +68,8 @@
   too long value value
 </tag>]
 
-[<tag key="value">
-  too long value value
-</tag>]
+[<tag key="value" param>Self Service</tag>]
 
-[<tag
-  key="value"
-  key2="value2"
-  param
->
-  too long value value
+[<tag key="value" param>
+  Self Service
 </tag>]
