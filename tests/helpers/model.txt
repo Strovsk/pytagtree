@@ -12,64 +12,60 @@
 12.[<tag id="tagId" key="value" param param2 />]
 
 13. [<tag
+  param
 >]
 14. [<tag
+  param
 />]
 15. [<tag
-  param
+  key="value"
 >]
 16. [<tag
-  param
+  key="value"
 />]
 17. [<tag
   key="value"
+  param
 >]
 18. [<tag
   key="value"
+  param
 />]
 19. [<tag
   key="value"
+  key2="value2"
   param
 >]
 20. [<tag
   key="value"
+  key2="value2"
   param
 />]
 21. [<tag
   key="value"
   key2="value2"
   param
+  param2
 >]
 22. [<tag
   key="value"
   key2="value2"
   param
-/>]
-23. [<tag
-  key="value"
-  key2="value2"
-  param
-  param2
->]
-24. [<tag
-  key="value"
-  key2="value2"
-  param
   param2
 />]
 
-25. [<tag>value</tag>]
-26. [<tag>
+23. [<tag>value</tag>]
+24. [<tag>
   too long value value
 </tag>]
 
-27. [<tag param>value</tag>]
-28. [<tag param>
+25. [<tag param>value</tag>]
+26. [<tag param>
   too long value value
 </tag>]
 
-29. [<tag key="value" param>Self Service</tag>]
+27. [<tag key="value" param>Self Service</tag>]
 
-30. [<tag key="value" param>
+28. [<tag key="value" param>
   Self Service
 </tag>]
