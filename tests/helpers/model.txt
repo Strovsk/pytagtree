@@ -32,24 +32,24 @@
   param
 />]
 19. [<tag
+  id="tagId"
   key="value"
-  key2="value2"
   param
 >]
 20. [<tag
+  id="tagId"
   key="value"
-  key2="value2"
   param
 />]
 21. [<tag
+  id="tagId"
   key="value"
-  key2="value2"
   param
   param2
 >]
 22. [<tag
+  id="tagId"
   key="value"
-  key2="value2"
   param
   param2
 />]
