@@ -3,11 +3,11 @@ import os
 class Tag(Component):
     def __init__(self, tagName: str, id: str, params: list, maxLenLine: int, indentation=2, innerText = '', noSlashAtEnd = False, hideId = False):
         self.innerText = innerText
-        if self.innerText:
-            noSlashProccess = not noSlashAtEnd
+        if len(self.innerText) > 0:
+            noSlashProccessed = True
         else:
-            noSlashProccess = noSlashAtEnd
-        super().__init__(tagName, indentation, 0, noSlashProccess)
+            noSlashProccessed = noSlashAtEnd
+        super().__init__(tagName, indentation, 0, noSlashProccessed)
         self.tagName = tagName
         self.id = id
         self.hideId = hideId
@@ -36,9 +36,8 @@ class Tag(Component):
         return super().genContent()
     
     def getFormattedParams(self):
-        # FIXME 23 and 24 tests
         if len(self.params) == 0 and len(self.noValueParams) == 0:
-            if self.hasSlashAtEnd: return ' ' # <- FIXME here
+            if self.hasSlashAtEnd: return ' '
             return ''
 
         formattedParams = [

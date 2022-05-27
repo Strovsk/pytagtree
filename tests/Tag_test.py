@@ -373,7 +373,6 @@ class TagTest(unittest.TestCase):
         self.assertEqual(tagTest.genContent(), data)
         pass
 
-    # FIXME
     def test_tag_has_right_format_id_23(self):
         '''Self closed Tag have right format (id, slash, params, break)'''
         data = getContentModel('paramTagValue')
@@ -389,7 +388,7 @@ class TagTest(unittest.TestCase):
         )
         self.assertEqual(tagTest.genContent(), data)
         pass
-    # FIXME
+
     def test_tag_has_right_format_id_24(self):
         '''Self closed Tag have right format (id, slash, params, break)'''
         data = getContentModel('paramTagBreakValue')
