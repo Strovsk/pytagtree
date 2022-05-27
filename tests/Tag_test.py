@@ -94,7 +94,7 @@ class TagTest(unittest.TestCase):
 
     def test_tag_has_right_format_id_04(self):
         '''Self closed Tag have right format (no id, slash, one param)'''
-        data = getContentModel('paramTag')
+        data = getContentModel('paramTagSlash')
         tagTest = Tag(
             tagName='tag',
             id='tagId',
@@ -102,7 +102,7 @@ class TagTest(unittest.TestCase):
             maxLenLine=25,
             indentation=2,
             hideId=True,
-            noSlashAtEnd=True
+            noSlashAtEnd=False
         )
         self.assertEqual(tagTest.genContent(), data)
         pass
@@ -258,7 +258,7 @@ class TagTest(unittest.TestCase):
         pass
 
     def test_tag_has_right_format_id_15(self):
-        '''Self closed Tag have right format (no id, slash, no params, break)'''
+        '''Self closed Tag have right format (no id, no slash, no params, break)'''
         data = getContentModel('valueParamTagBreak')
         tagTest = Tag(
             tagName='tag',
@@ -378,7 +378,7 @@ class TagTest(unittest.TestCase):
         pass
 
     def test_tag_has_right_format_id_23(self):
-        '''Self closed Tag have right format (id, slash, params, break)'''
+        '''Self closed Tag have right format (no id, slash or not, params, break)'''
         data = getContentModel('emptyTagValue')
         tagTest = Tag(
             tagName='tag',
@@ -394,7 +394,7 @@ class TagTest(unittest.TestCase):
         pass
 
     def test_tag_has_right_format_id_24(self):
-        '''Self closed Tag have right format (id, slash, params, break)'''
+        '''Self closed Tag have right format (no id, slash or not, params, break)'''
         data = getContentModel('emptyTagBreakValue')
         tagTest = Tag(
             tagName='tag',
@@ -410,7 +410,7 @@ class TagTest(unittest.TestCase):
         pass
 
     def test_tag_has_right_format_id_25(self):
-        '''Self closed Tag have right format (id, slash, params, break)'''
+        '''Self closed Tag have right format (no id, slash or not, params, break)'''
         data = getContentModel('paramTagValue')
         tagTest = Tag(
             tagName='tag',
@@ -426,7 +426,7 @@ class TagTest(unittest.TestCase):
         pass
 
     def test_tag_has_right_format_id_26(self):
-        '''Self closed Tag have right format (id, slash, params, break)'''
+        '''Self closed Tag have right format (no id, slash or not, params, break)'''
         data = getContentModel('paramTagBreakValue')
         tagTest = Tag(
             tagName='tag',
@@ -442,7 +442,7 @@ class TagTest(unittest.TestCase):
         pass
 
     def test_tag_has_right_format_id_27(self):
-        '''Self closed Tag have right format (id, slash, params, break)'''
+        '''Self closed Tag have right format (no id, slash or not, params, break)'''
         data = getContentModel('paramsTagValue')
         tagTest = Tag(
             tagName='tag',
@@ -458,7 +458,7 @@ class TagTest(unittest.TestCase):
         pass
 
     def test_tag_has_right_format_id_28(self):
-        '''Self closed Tag have right format (id, slash, params, break)'''
+        '''Self closed Tag have right format (no id, slash or not, params, break)'''
         data = getContentModel('paramsTagBreakValue')
         tagTest = Tag(
             tagName='tag',
@@ -467,7 +467,7 @@ class TagTest(unittest.TestCase):
             maxLenLine=30,
             indentation=2,
             hideId=True,
-            noSlashAtEnd=True,
+            noSlashAtEnd=False,
             innerText='Self Service'
         )
         self.assertEqual(tagTest.genContent(), data)
