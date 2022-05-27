@@ -1,5 +1,5 @@
 from .Component import Component
-import os
+
 class Tag(Component):
     def __init__(self, tagName: str, id: str, params: list, maxLenLine: int, indentation=2, innerText = '', noSlashAtEnd = False, hideId = False):
         self.innerText = innerText
