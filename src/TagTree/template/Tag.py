@@ -4,10 +4,10 @@ class Tag(Component):
     def __init__(self, tagName: str, id: str, params: list, maxLenLine: int, indentation=2, innerText = '', noSlashAtEnd = False, hideId = False):
         self.innerText = innerText
         if len(self.innerText) > 0:
-            noSlashProccessed = True
+            noSlashProcessed = True
         else:
-            noSlashProccessed = noSlashAtEnd
-        super().__init__(tagName, indentation, 0, noSlashProccessed)
+            noSlashProcessed = noSlashAtEnd
+        super().__init__(tagName, indentation, 0, noSlashProcessed)
         self.tagName = tagName
         self.id = id
         self.hideId = hideId
