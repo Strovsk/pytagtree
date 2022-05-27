@@ -35,8 +35,10 @@ def getContentModel(testId):
         "paramsTagBreakIdSlash": tagstestlist[19],
         "params2TagBreakId": tagstestlist[20],
         "params2TagBreakIdSlash": tagstestlist[21],
-        "paramTagValue": tagstestlist[22],
-        "paramTagBreakValue": tagstestlist[23]
+        "emptyTagValue": tagstestlist[22],
+        "emptyTagBreakValue": tagstestlist[23],
+        "paramTagValue": tagstestlist[24],
+        "paramTagBreakValue": tagstestlist[25]
     })[testId]
 
 def digestTestName(testName):
@@ -375,7 +377,7 @@ class TagTest(unittest.TestCase):
 
     def test_tag_has_right_format_id_23(self):
         '''Self closed Tag have right format (id, slash, params, break)'''
-        data = getContentModel('paramTagValue')
+        data = getContentModel('emptyTagValue')
         tagTest = Tag(
             tagName='tag',
             id='tagId',
@@ -391,12 +393,44 @@ class TagTest(unittest.TestCase):
 
     def test_tag_has_right_format_id_24(self):
         '''Self closed Tag have right format (id, slash, params, break)'''
-        data = getContentModel('paramTagBreakValue')
+        data = getContentModel('emptyTagBreakValue')
         tagTest = Tag(
             tagName='tag',
             id='tagId',
             params=[],
             maxLenLine=0,
+            indentation=2,
+            hideId=True,
+            noSlashAtEnd=True,
+            innerText='too long value value'
+        )
+        self.assertEqual(tagTest.genContent(), data)
+        pass
+
+    def test_tag_has_right_format_id_25(self):
+        '''Self closed Tag have right format (id, slash, params, break)'''
+        data = getContentModel('paramTagValue')
+        tagTest = Tag(
+            tagName='tag',
+            id='tagId',
+            params=['param'],
+            maxLenLine=160,
+            indentation=2,
+            hideId=True,
+            noSlashAtEnd=True,
+            innerText='value'
+        )
+        self.assertEqual(tagTest.genContent(), data)
+        pass
+
+    def test_tag_has_right_format_id_26(self):
+        '''Self closed Tag have right format (id, slash, params, break)'''
+        data = getContentModel('paramTagBreakValue')
+        tagTest = Tag(
+            tagName='tag',
+            id='tagId',
+            params=['param'],
+            maxLenLine=30,
             indentation=2,
             hideId=True,
             noSlashAtEnd=True,
