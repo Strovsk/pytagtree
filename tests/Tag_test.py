@@ -1,3 +1,4 @@
+from helpers.TagTests import *
 import sys
 import os
 import unittest
@@ -5,97 +6,24 @@ import unittest
 sys.path.append(os.path.abspath('../src'))
 from TagTree.template.Tag import Tag
 
-class TagTest(unittest.TestCase):
-    def test_returnFormattedTag(self):
-        # Should return the right formatted string when line is not greater than limit 80
-        lineLimit = 80
-        main = Tag(
-            'MainTag',
-            'idMainTag',
-            [
-                ('param1', 'value1'),
-                ('param2', 'value2'),
-                ('param3', 'value3')
-            ],
-            lineLimit,
-            2
-        )
-        expected = '<MainTag id="idMainTag" param1="value1" param2="value2" param3="value3" />'
-        self.assertEqual(main.genContent(), expected)
+def digestTestName(testName):
+    replaced = testName.replace('_', ' ')
+    return  replaced[0].upper() + replaced[1:]
 
-        # Should Break Line the line is greater than limit
-        lineLimit = 50
-        main = Tag(
-            'MainTag',
-            'idMainTag',
-            [
-                ('param1', 'value1'),
-                ('param2', 'value2'),
-                ('param3', 'value3')
-            ],
-            lineLimit,
-            2
-        )
-        expected = '<MainTag\n  id="idMainTag"\n  param1="value1"\n  param2="value2"\n  param3="value3"\n/>'
-        self.assertEqual(main.genContent(), expected)
-    
-    def test_returnRightModelWithChildrenNodes(self):
-        # Should return the right formatted string when line is not greater than limit 80
-        lineLimit = 80
-        main = Tag(
-            'MainTag',
-            'idMainTag',
-            [
-                ('param1', 'value1'),
-                ('param2', 'value2'),
-                ('param3', 'value3')
-            ],
-            lineLimit,
-            2
-        )
-        child = Tag(
-            'ChildTag',
-            'idChildTag',
-            [
-                ('param1', 'value1'),
-                ('param2', 'value2'),
-                ('param3', 'value3')
-            ],
-            lineLimit,
-            2
-        )
-        main.push(child)
-        expected = '<MainTag id="idMainTag" param1="value1" param2="value2" param3="value3" >\n  <ChildTag id="idChildTag" param1="value1" param2="value2" param3="value3" />\n</MainTag>'
-        self.assertEqual(main.genContent(), expected)
+def suite():
+    s = unittest.TestSuite()
+    for test in testsClosedInlineTags().load_tests():
+        s.addTest(testsClosedInlineTags(test))
 
-        # Should Break Line the line is greater than limit
-        lineLimit = 50
-        main = Tag(
-            'MainTag',
-            'idMainTag',
-            [
-                ('param1', 'value1'),
-                ('param2', 'value2'),
-                ('param3', 'value3')
-            ],
-            lineLimit,
-            2
-        )
-        child = Tag(
-            'ChildTag',
-            'idChildTag',
-            [
-                ('param1', 'value1'),
-                ('param2', 'value2'),
-                ('param3', 'value3')
-            ],
-            lineLimit,
-            2
-        )
-        main.push(child)
-        expected = '<MainTag\n  id="idMainTag"\n  param1="value1"\n  param2="value2"\n  param3="value3"\n>\n  <ChildTag\n    id="idChildTag"\n    param1="value1"\n    param2="value2"\n    param3="value3"\n  />\n</MainTag>'
+    for test in testsValueTags().load_tests():
+        s.addTest(testsValueTags(test))
 
-        self.assertEqual(main.genContent(), expected)
+    for test in testsClosedBreakTags().load_tests():
+        s.addTest(testsClosedBreakTags(test))
+
+
+    return s
 
 if __name__ == '__main__':
-    unittest.main()
+    runner = unittest.TextTestRunner()
+    runner.run(suite())

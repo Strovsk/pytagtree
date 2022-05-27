@@ -47,13 +47,13 @@ class Component:
         firstTagPart = f'{self.__renderIndentation()}<{self.__contentBase + self.__content}>'
         endTag = f'</{self.__contentBase}>'
 
-        if len(self.componentValue) != 0 and len(self.children) == 0:
+        if self.componentValue != '' and len(self.children) == 0:
             return firstTagPart + self.componentValue + endTag
 
         if len(self.children) == 0:
             indent = self.__renderIndentation()
             if self.hasSlashAtEnd: 
-                finalDecorator = ' />'
+                finalDecorator = '/>'
             else:
                 finalDecorator = '>'
             return f'{indent}<{self.__contentBase + self.__content}{finalDecorator}'

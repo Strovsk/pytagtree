@@ -1,0 +1,71 @@
+1. [<tag>]
+2. [<tag />]
+3. [<tag param>]
+4. [<tag param />]
+5. [<tag key="value">]
+6. [<tag key="value" />]
+7. [<tag key="value" param>]
+8. [<tag key="value" param />]
+9. [<tag id="tagId" key="value" param>]
+10. [<tag id="tagId" key="value" param />]
+11. [<tag id="tagId" key="value" param param2>]
+12.[<tag id="tagId" key="value" param param2 />]
+
+13. [<tag
+  param
+>]
+14. [<tag
+  param
+/>]
+15. [<tag
+  key="value"
+>]
+16. [<tag
+  key="value"
+/>]
+17. [<tag
+  key="value"
+  param
+>]
+18. [<tag
+  key="value"
+  param
+/>]
+19. [<tag
+  id="tagId"
+  key="value"
+  param
+>]
+20. [<tag
+  id="tagId"
+  key="value"
+  param
+/>]
+21. [<tag
+  id="tagId"
+  key="value"
+  param
+  param2
+>]
+22. [<tag
+  id="tagId"
+  key="value"
+  param
+  param2
+/>]
+
+23. [<tag>value</tag>]
+24. [<tag>
+  too long value value
+</tag>]
+
+25. [<tag param>value</tag>]
+26. [<tag param>
+  too long value value
+</tag>]
+
+27. [<tag key="value" param>Self Service</tag>]
+
+28. [<tag key="value" param>
+  Self Service
+</tag>]

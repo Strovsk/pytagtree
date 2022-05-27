@@ -207,7 +207,7 @@ The Output:
         - If true, show '>' at end of self-closed tags instead '/>'
     - default: False
     - type: bool
-- `hideId`: False
+- `hideId`:
     - description
         - If true, remove the id from tag params at final result
     - default: False
