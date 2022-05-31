@@ -1,0 +1,14 @@
+LICENSE
+setup.cfg
+setup.py
+src/TagTree/Document.py
+src/TagTree/__init__.py
+src/TagTree.egg-info/PKG-INFO
+src/TagTree.egg-info/SOURCES.txt
+src/TagTree.egg-info/dependency_links.txt
+src/TagTree.egg-info/entry_points.txt
+src/TagTree.egg-info/requires.txt
+src/TagTree.egg-info/top_level.txt
+src/TagTree/template/Component.py
+src/TagTree/template/Tag.py
+src/TagTree/template/__init__.py

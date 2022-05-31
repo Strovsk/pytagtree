@@ -66,6 +66,5 @@ class Component:
                 child.genContent()
             )
         formattedValue = ''
-        if len(self.componentValue) > 0:
-            formattedValue = f'\n{self.__renderIndentation(self.__indentation + 1)}{self.componentValue}'
+        
         return firstTagPart + formattedValue + buffer + endTag

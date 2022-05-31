@@ -1,3 +1,31 @@
+Metadata-Version: 2.1
+Name: TagTree
+Version: 1.0.0
+Summary: A Tag Dom Generator module
+Home-page: https://github.com/Strovsk/pytagtree
+Author: Thiago S C Pereira
+Author-email: strovsk@outlook.com
+License: UNKNOWN
+Project-URL: Bug Reports, https://github.com/Strovsk/pytagtree/issues
+Project-URL: Funding, https://donate.pypi.org
+Project-URL: Say Thanks!, http://saythanks.io/to/example
+Project-URL: Source, https://github.com/Strovsk/pytagtree
+Keywords: tag,tree,dom,generator,html,markup,xml,tags,xhtml,xcell,drawio
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Python: >=3.7, <4
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
 # TagTree
 
 ![TagTree](./Assets/Logo.png)
@@ -257,3 +285,5 @@ The Output:
         - If true, remove the id from tag params at final result
     - default: False
     - type: bool
+
+
