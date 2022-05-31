@@ -35,7 +35,7 @@ setup(
     # For a discussion on single-sourcing the version across setup.py and the
     # project code, see
     # https://packaging.python.org/guides/single-sourcing-package-version/
-    version="1.0.0",  # Required
+    version="1.0.2",  # Required
     # This is a one-line description or tagline of what your project does. This
     # corresponds to the "Summary" metadata field:
     # https://packaging.python.org/specifications/core-metadata/#summary
@@ -141,15 +141,15 @@ setup(
     # },
     # If there are data files included in your packages that need to be
     # installed, specify them here.
-    package_data={  # Optional
-        "sample": ["package_data.dat"],
-    },
+    # package_data={  # Optional
+    #     "sample": ["package_data.dat"],
+    # },
     # Although 'package_data' is the preferred approach, in some case you may
     # need to place data files outside of your packages. See:
     # http://docs.python.org/distutils/setupscript.html#installing-additional-files
     #
     # In this case, 'data_file' will be installed into '<sys.prefix>/my_data'
-    data_files=[("my_data", ["data/data_file"])],  # Optional
+    # data_files=[("my_data", ["data/data_file"])],  # Optional
     # To provide executable scripts, use entry points in preference to the
     # "scripts" keyword. Entry points provide cross-platform support and allow
     # `pip` to create the appropriate form of executable for the target
