@@ -9,7 +9,52 @@ The package source code is available on [this github repo](https://github.com/St
     pip install tagTree
 
 # Get-started
-A basic example of an html file
+You can build complex markiup files using simple commands, just push the children to father and you'll get a dom tree.
+
+0. Import the Tag Class
+    ```python
+    from tagTree import Tag
+    ```
+1. Create a father tag
+    ```python
+    father = Tag(
+        tagName = 'fatherTagName',
+        id = 'fatherTagId',
+        params= [
+            ('fatherParam', 'value'),
+            'isolatedParam'
+        ],
+        maxLenLine = 200, # 200 characteres
+        indentation = 2, # indendation size in spaces
+    )
+    ```
+2. Create a child tag
+    ```python
+    child = Tag(
+        tagName = 'childTagName',
+        id = 'childTagId',
+        params= [
+            ('childParam', 'paramValue'),
+        ],
+        maxLenLine = 200, # 200 characteres until break lines to format
+        indentation = 2, # indendation size in spaces
+    )
+    ```
+3. Append the children to father:
+    ```python
+    father.push(child)
+    # print the result
+    print(father.genContent())
+    ```
+
+If you print the command, you'll see the result:
+```html
+<fatherTagName id="fatherTagId" fatherParam="value" isolated>
+  <childTagName id="childTagId" tagParam="paramValue" />
+</fatherTagName>
+```
+
+## A basic example of an html file
 ```python
 from tagTree import Tag
 
