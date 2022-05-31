@@ -6,14 +6,14 @@ TagTree is a useful package that provides you to write and generate markup files
 The package source code is available on [this github repo](https://github.com/Strovsk/pytagtree)
 
 # Install
-    pip install tagTree
+    pip install TagTree
 
 # Get-started
-You can build complex markiup files using simple commands, just push the children to father and you'll get a dom tree.
+You can build complex markup files using simple commands, just push the children to father and you'll get a dom tree.
 
 0. Import the Tag Class
     ```python
-    from tagTree import Tag
+    from TagTree import Tag
     ```
 1. Create a father tag
     ```python
@@ -56,7 +56,7 @@ If you print the command, you'll see the result:
 
 ## A basic example of an html file
 ```python
-from tagTree import Tag
+from tagTree import Tag, Document
 
 lineLen = 50
 indentSize = 2
