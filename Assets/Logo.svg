@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 277.31 248.23">
+    <defs>
+        <style>
+            .externalContainer, .logoDecoratorLine, .internalLeftArrow, .internalTopLine, .internalBottomLine {
+                fill: none;
+                stroke-miterlimit: 10;
+            }
+
+            .externalContainer {
+                stroke: url(#Gr_blue_to_green);
+            }
+
+            .internalLeftArrow {
+                stroke:#000;
+            }
+
+            .internalTopLine {
+                stroke: url(#Gr_blue_to_black);
+            }
+
+            .internalBottomLine {
+                stroke: url(#Gr_blue_to_black);
+            }
+
+            .TextTagTree {
+                font-size: 54.14px;
+                font-family: MyriadPro-Regular, Myriad Pro;
+            }
+
+            .TextTagTree-t {
+                letter-spacing: -0.06em;
+            }
+
+            .TextTagTree-a {
+                letter-spacing:0em;
+            }
+
+            .TextTagTree-g {
+                letter-spacing:-0.03em;
+            }
+
+            .TextTagTree-t2 {
+                letter-spacing:-0.04em;
+            }
+
+            .TextTagTree-r {
+                letter-spacing:-0.01em;
+            }
+
+            .logoDecoratorLine {
+                stroke: #e58035;
+                stroke-width:2px;
+            }
+
+        </style>
+        <linearGradient
+            id="Gr_blue_to_green"
+            y1="117.5" x2="271.35"
+            y2="117.5"
+            gradientUnits="userSpaceOnUse"
+        >
+            <stop offset="0" stop-color="#7fa7ff">
+                <animate attributeName="stop-color" values="#7fa7ff; #00d407; #7fa7ff" dur="2s" repeatCount="indefinite"></animate>
+            </stop>
+            <stop offset="1" stop-color="#00d407">
+                <animate attributeName="stop-color" values="#00d407; 7fa7ff; #00d407" dur="2s" repeatCount="indefinite"></animate>
+            </stop>
+        </linearGradient>
+
+        <linearGradient
+            id="Gr_blue_to_black"
+            x1="67.77"
+            y1="91.72"
+            x2="196.09"
+            y2="91.72"
+            gradientUnits="userSpaceOnUse"
+        >
+            <stop offset="0" stop-color="#64b0ca">
+                <animate attributeName="stop-color" values="#64b0ca; #00d407; #64b0ca" dur="2s" repeatCount="indefinite"></animate>
+            </stop>
+            <stop offset="1" />
+        </linearGradient>
+
+    </defs>
+    <title>Logo</title>
+    <g id="sized">
+        <g id="logo">
+            <polygon class="externalContainer" points="203.23 0.5 68.13 0.5 0.58 117.5 68.13 234.5 203.23 234.5 270.78 117.5 203.23 0.5" />
+            <polyline class="internalLeftArrow" points="136.18 234.5 203.68 176 271.18 117.5 136.18 0.5" />
+            <line class="internalTopLine" x1="68.18" y1="0.5" x2="195.68" y2="182.93" />
+            <line class="internalBottomLine" x1="68.18" y1="234.5" x2="203.68" y2="59" />
+        </g>
+        <text
+            class="TextTagTree"
+            transform="translate(96.73 234.7)"
+        >
+            <tspan class="TextTagTree-t">T</tspan>
+            <tspan class="TextTagTree-a" x="23.44" y="0">a</tspan>
+            <tspan class="TextTagTree-g" x="49.54" y="0">g</tspan>
+            <tspan class="TextTagTree-t2" x="78.07" y="0">T</tspan>
+            <tspan class="TextTagTree-r" x="102.54" y="0">r</tspan>
+            <tspan x="119.7" y="0">ee</tspan>
+        </text>
+        
+        <g id="logo_decorator" data-name="logo decorator">
+            <line class="logoDecoratorLine" x1="273.3" y1="195.74" x2="266.57" y2="202.47" />
+            <line class="logoDecoratorLine" x1="270" y1="192.44" x2="276.6" y2="199.04" />
+            <line class="logoDecoratorLine" x1="272.94" y1="201.7" x2="266.21" y2="194.97" />
+            <line class="logoDecoratorLine" x1="276.24" y1="198.4" x2="269.64" y2="205" />
+        </g>
+    </g>
+</svg>

@@ -1,3 +1,29 @@
+Metadata-Version: 2.1
+Name: TagTree
+Version: 1.0.21
+Summary: A Tag Dom Generator module
+Home-page: https://github.com/Strovsk/pytagtree
+Author: Thiago S C Pereira
+Author-email: strovsk@outlook.com
+Project-URL: Bug Reports, https://github.com/Strovsk/pytagtree/issues
+Project-URL: Funding, https://donate.pypi.org
+Project-URL: Say Thanks!, http://saythanks.io/to/example
+Project-URL: Source, https://github.com/Strovsk/pytagtree
+Keywords: tag,tree,dom,generator,html,markup,xml,tags,xhtml,xcell,drawio
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Python: >=3.7, <4
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
 # TagTree
 
 ![TagTree](./Assets/Logo.png)
@@ -11,11 +37,11 @@ The package source code is available on [this github repo](https://github.com/St
 # Get-started
 You can build complex markup files using simple commands, just push the children to father and you'll get a dom tree.
 
-1. Import the Tag Class
+0. Import the Tag Class
     ```python
     from TagTree import Tag
     ```
-2. Create a father tag
+1. Create a father tag
     ```python
     father = Tag(
         tagName = 'fatherTagName',
@@ -28,7 +54,7 @@ You can build complex markup files using simple commands, just push the children
         indentation = 2, # indendation size in spaces
     )
     ```
-3. Create a child tag
+2. Create a child tag
     ```python
     child = Tag(
         tagName = 'childTagName',
@@ -40,7 +66,7 @@ You can build complex markup files using simple commands, just push the children
         indentation = 2, # indendation size in spaces
     )
     ```
-4. Append the children to father:
+3. Append the children to father:
     ```python
     father.push(child)
     # print the result
