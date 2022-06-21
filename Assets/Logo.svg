@@ -96,7 +96,7 @@
             <polyline class="internalLeftArrow" points="136.18 234.5 203.68 176 271.18 117.5 136.18 0.5" />
             <line id="internalTopLine" class="internalTopLine" x1="68.18" y1="0.5" x2="195.68" y2="182.93" />
             <use href="#internalTopLine" filter="url(#blurLight)" />
-            <line class="internalBottomLine" x1="68.18" y1="234.5" x2="203.68" y2="59" />
+            <line id="internalBottomLine" class="internalBottomLine" x1="68.18" y1="234.5" x2="203.68" y2="59" />
             <use href="#internalBottomLine" filter="url(#blurLight)" />
         </g>
         <text
