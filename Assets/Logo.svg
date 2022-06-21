@@ -80,15 +80,24 @@
             </stop>
             <stop offset="1" />
         </linearGradient>
-
+        <filter id="blurLight">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+        </filter>
     </defs>
     <title>Logo</title>
     <g id="sized">
         <g id="logo">
-            <polygon class="externalContainer" points="203.23 0.5 68.13 0.5 0.58 117.5 68.13 234.5 203.23 234.5 270.78 117.5 203.23 0.5" />
+            <polygon
+                class="externalContainer"
+                id="externalContainer"
+                points="203.23 0.5 68.13 0.5 0.58 117.5 68.13 234.5 203.23 234.5 270.78 117.5 203.23 0.5"
+            />
+            <use href="#externalContainer" filter="url(#blurLight)" />
             <polyline class="internalLeftArrow" points="136.18 234.5 203.68 176 271.18 117.5 136.18 0.5" />
-            <line class="internalTopLine" x1="68.18" y1="0.5" x2="195.68" y2="182.93" />
+            <line id="internalTopLine" class="internalTopLine" x1="68.18" y1="0.5" x2="195.68" y2="182.93" />
+            <use href="#internalTopLine" filter="url(#blurLight)" />
             <line class="internalBottomLine" x1="68.18" y1="234.5" x2="203.68" y2="59" />
+            <use href="#internalBottomLine" filter="url(#blurLight)" />
         </g>
         <text
             class="TextTagTree"
