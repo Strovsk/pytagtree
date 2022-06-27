@@ -3,3 +3,5 @@
 main.py
 Assets/Logo.ai
 **/__pycache__
+build
+dist
