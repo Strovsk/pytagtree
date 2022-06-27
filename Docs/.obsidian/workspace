@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Index.md",
+            "file": "Document.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Index.md",
+                "file": "Document.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,8 +89,9 @@
   },
   "active": "47271bd17a63fb38",
   "lastOpenFiles": [
-    "Index.md",
+    "Document.md",
     "Component.md",
+    "Index.md",
     "assets/Load Childs algoritm flow diagram.png",
     "tree generation algorithm.md",
     "Tag.md"
