@@ -1,0 +1,98 @@
+{
+  "main": {
+    "id": "6a63f726e4350954",
+    "type": "split",
+    "children": [
+      {
+        "id": "47271bd17a63fb38",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Index.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "6aab7989a59527d3",
+    "type": "split",
+    "children": [
+      {
+        "id": "169175a60789b947",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b48a380d929c5e71",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "b786c47e37c00ea9",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "f9b9ed83c73ebc24",
+    "type": "split",
+    "children": [
+      {
+        "id": "2a6f57e9ab744d19",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8865b2f158983170",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Index.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "47271bd17a63fb38",
+  "lastOpenFiles": [
+    "Index.md",
+    "Component.md",
+    "assets/Load Childs algoritm flow diagram.png",
+    "tree generation algorithm.md",
+    "Tag.md"
+  ]
+}
