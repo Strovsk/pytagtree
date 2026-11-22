@@ -1,7 +1,8 @@
-from .getContentModel import getContentModel
-import sys
 import os
+import sys
 import unittest
+
+from .getContentModel import getContentModel
 
 sys.path.append(os.path.abspath("../src"))
 from TagTree.template.Tag import Tag
@@ -21,7 +22,6 @@ class testsClosedBreakTags(unittest.TestCase):
             noSlashAtEnd=True,
         )
         self.assertEqual(tagTest.genContent(), data)
-        pass
 
     def test_tag_has_right_format_id_14(self):
         """Self closed Tag have right format (no id, slash, no params, break)"""
@@ -36,7 +36,6 @@ class testsClosedBreakTags(unittest.TestCase):
             noSlashAtEnd=False,
         )
         self.assertEqual(tagTest.genContent(), data)
-        pass
 
     def test_tag_has_right_format_id_15(self):
         """Self closed Tag have right format (no id, no slash, no params, break)"""
@@ -51,7 +50,6 @@ class testsClosedBreakTags(unittest.TestCase):
             noSlashAtEnd=True,
         )
         self.assertEqual(tagTest.genContent(), data)
-        pass
 
     def test_tag_has_right_format_id_16(self):
         """Self closed Tag have right format (no id, slash, no params, break)"""
@@ -66,7 +64,6 @@ class testsClosedBreakTags(unittest.TestCase):
             noSlashAtEnd=False,
         )
         self.assertEqual(tagTest.genContent(), data)
-        pass
 
     def test_tag_has_right_format_id_17(self):
         """Self closed Tag have right format (no id, no slash, params, break)"""
@@ -81,7 +78,6 @@ class testsClosedBreakTags(unittest.TestCase):
             noSlashAtEnd=True,
         )
         self.assertEqual(tagTest.genContent(), data)
-        pass
 
     def test_tag_has_right_format_id_18(self):
         """Self closed Tag have right format (no id, slash, params, break)"""
@@ -96,7 +92,6 @@ class testsClosedBreakTags(unittest.TestCase):
             noSlashAtEnd=False,
         )
         self.assertEqual(tagTest.genContent(), data)
-        pass
 
     def test_tag_has_right_format_id_19(self):
         """Self closed Tag have right format (id, no slash, params, break)"""
@@ -111,7 +106,6 @@ class testsClosedBreakTags(unittest.TestCase):
             noSlashAtEnd=True,
         )
         self.assertEqual(tagTest.genContent(), data)
-        pass
 
     def test_tag_has_right_format_id_20(self):
         """Self closed Tag have right format (id, slash, params, break)"""
@@ -126,7 +120,6 @@ class testsClosedBreakTags(unittest.TestCase):
             noSlashAtEnd=False,
         )
         self.assertEqual(tagTest.genContent(), data)
-        pass
 
     def test_tag_has_right_format_id_21(self):
         """Self closed Tag have right format (id, no slash, params, break)"""
@@ -141,7 +134,6 @@ class testsClosedBreakTags(unittest.TestCase):
             noSlashAtEnd=True,
         )
         self.assertEqual(tagTest.genContent(), data)
-        pass
 
     def test_tag_has_right_format_id_22(self):
         """Self closed Tag have right format (id, slash, params, break)"""
@@ -156,7 +148,6 @@ class testsClosedBreakTags(unittest.TestCase):
             noSlashAtEnd=False,
         )
         self.assertEqual(tagTest.genContent(), data)
-        pass
 
     def load_tests(self):
         return [test for test in dir(self) if test.find("test_") != -1]

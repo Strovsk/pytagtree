@@ -1,12 +1,13 @@
-import re
 import os
+import re
 
 
 def getContentModel(testId):
-    path = os.path.abspath(f"./helpers/model.txt")
-    file = open(path, "r")
-    data = file.read()
-    file.close()
+    path = os.path.abspath("./helpers/model.txt")
+
+    with open(path, "r") as file:
+        data = file.read()
+
     tagstestlist = re.findall(r"\[(.*?)\]", data, re.DOTALL | re.MULTILINE)
     return (
         {

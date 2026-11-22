@@ -1,10 +1,10 @@
-from helpers.TagTests import *
-import sys
 import os
+import sys
 import unittest
 
+from helpers.TagTests import *
+
 sys.path.append(os.path.abspath("../src"))
-from TagTree.template.Tag import Tag
 
 
 def digestTestName(testName):
