@@ -1,25 +1,27 @@
 {
-  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
-
-  "editor.formatOnSave": true,
-  "[python]": {
-    "editor.defaultFormatter": "charliermarsh.ruff",
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
     "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.fixAll.ruff": "explicit",
-      "source.organizeImports.ruff": "explicit"
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.ruff": "explicit",
+            "source.organizeImports.ruff": "explicit"
+        }
+    },
+    "ruff.importStrategy": "fromEnvironment",
+    "python.testing.unittestEnabled": true,
+    "python.testing.pytestEnabled": false,
+    "python.testing.cwd": "${workspaceFolder}/tests",
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        ".",
+        "-p",
+        "*_test.py"
+    ],
+    "files.exclude": {
+        "**/__pycache__": true,
+        ".pdm-build": true
     }
-  },
-  "ruff.importStrategy": "fromEnvironment",
-  "ruff.nativeServer": "on",
-
-  "python.testing.unittestEnabled": true,
-  "python.testing.pytestEnabled": false,
-  "python.testing.cwd": "${workspaceFolder}/tests",
-  "python.testing.unittestArgs": ["-v", "-s", ".", "-p", "*_test.py"],
-
-  "files.exclude": {
-    "**/__pycache__": true,
-    ".pdm-build": true
-  }
 }
