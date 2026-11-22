@@ -43,6 +43,11 @@ dev = [
 target-version = "py310"
 line-length = 88
 
+[tool.ruff.lint.per-file-ignores]
+# Module names are part of the public API (TagTree, Tag, Document, Component)
+"src/TagTree/**" = ["N999"]
+"tests/**" = ["N999"]
+
 [tool.pdm]
 distribution = true
 
