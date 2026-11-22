@@ -1,5 +1,3 @@
-import re
-
 # TODO Accept to load content with value. Ex: "<h1 params>content</h1>"
 
 

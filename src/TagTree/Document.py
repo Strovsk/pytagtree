@@ -4,10 +4,9 @@ class Document:
         self.override = allowOverride
         self.indentation = globalIndent
         self.maxLineSize = globalLineSize
-        pass
 
     def push(self, item):
-        if item.id in self.items.keys() and not self.override:
+        if item.id in self.items and not self.override:
             raise RuntimeError(
                 "You cannot add elements with the same Id. To aloow it, set override to True"
             )
@@ -16,7 +15,7 @@ class Document:
         self.items[item.id] = item
 
     def pop(self, id):
-        if id in self.items.keys():
+        if id in self.items:
             del self.items[id]
 
     def __getContent(self):
@@ -30,9 +29,5 @@ class Document:
         print(self.__getContent())
 
     def saveContentTo(self, filePath):
-        try:
-            file = open(filePath, "w")
+        with open(filePath, "w") as file:
             file.write(self.__getContent())
-            file.close()
-        except:
-            raise RuntimeError("Cannot read file path")
