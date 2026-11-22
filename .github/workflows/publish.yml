@@ -1,0 +1,38 @@
+name: Publish to PyPI
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      contents: read
+      id-token: write # trusted publishing (OIDC), sem token salvo no repo
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: pdm-project/setup-pdm@v4
+        with:
+          python-version: "3.12"
+          cache: true
+
+      - name: Check tag matches version
+        run: |
+          VERSION=$(pdm show --version)
+          TAG="${GITHUB_REF_NAME#v}"
+          if [ "$VERSION" != "$TAG" ]; then
+            echo "Tag $GITHUB_REF_NAME não bate com a versão $VERSION do pyproject.toml"
+            exit 1
+          fi
+
+      - name: Install
+        run: pdm install
+
+      - name: Test
+        run: pdm run test
+
+      - name: Build and publish
+        run: pdm publish
