@@ -1,18 +1,20 @@
-name: Publish to PyPI
+name: Release
 
 on:
-  release:
-    types: [published]
+  push:
+    tags: ["v*"]
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     environment: pypi
     permissions:
-      contents: read
+      contents: write # criar o GitHub Release
       id-token: write # trusted publishing (OIDC), sem token salvo no repo
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       - uses: pdm-project/setup-pdm@v4
         with:
@@ -36,3 +38,11 @@ jobs:
 
       - name: Build and publish
         run: pdm publish
+
+      - name: Release notes
+        run: pdm run cz changelog "$GITHUB_REF_NAME" --dry-run > RELEASE_NOTES.md
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" dist/* --title "$GITHUB_REF_NAME" --notes-file RELEASE_NOTES.md
