@@ -1,6 +1,3 @@
-# TODO Accept to load content with value. Ex: "<h1 params>content</h1>"
-
-
 class Component:
     def __init__(
         self,
@@ -11,12 +8,14 @@ class Component:
     ):
         self.children = []
         self.__contentBase = ComponentName
-        # self.__content = self.__contentBase
         self.__content = ""
         self.__indentation = indentation
         self.indentationSize = indentationSize
         self.hasSlashAtEnd = not noSlashAtEnd
+        # Value rendered inline (or already line-broken) when there are no children
         self.componentValue = ""
+        # Raw text rendered on its own line before the children (mixed content)
+        self.componentText = ""
 
     def push(self, item):
         item.addIndentation(self.__indentation)
@@ -32,52 +31,45 @@ class Component:
 
     def __renderIndentation(self, size=-1):
         if size == -1:
-            return "".join(
-                [
-                    "".join([" " for j in range(self.indentationSize)])
-                    for i in range(self.__indentation)
-                ]
-            )
-            # return ''.join(['  ' for i in range(self.__indentation)])
-        return "".join(
-            ["".join([" " for j in range(self.indentationSize)]) for i in range(size)]
-        )
+            size = self.__indentation
+        return " " * (self.indentationSize * size)
 
     def addIndentation(self, fatherIndentation):
         self.__indentation = fatherIndentation + 1
-        if self.children == 0:
-            return
         for child in self.children:
             child.addIndentation(self.__indentation)
 
     def removeIndentation(self, fatherIndentation):
         self.__indentation = fatherIndentation - 1
-        if self.children == 0:
-            return
         for child in self.children:
             child.removeIndentation(self.__indentation)
 
+    def applySettings(self, indentationSize=None, maxLenLine=None):
+        """Apply indentation size and max line length to this node and its subtree."""
+        if indentationSize is not None:
+            self.indentationSize = indentationSize
+        if maxLenLine is not None and hasattr(self, "maxLenLine"):
+            self.maxLenLine = maxLenLine
+        for child in self.children:
+            child.applySettings(indentationSize, maxLenLine)
+
+    def _selfClosingDecorator(self):
+        return "/>" if self.hasSlashAtEnd else ">"
+
     def genContent(self):
-        firstTagPart = (
-            f"{self.__renderIndentation()}<{self.__contentBase + self.__content}>"
-        )
+        indent = self.__renderIndentation()
+        openTag = f"<{self.__contentBase + self.__content}"
         endTag = f"</{self.__contentBase}>"
 
-        if self.componentValue != "" and len(self.children) == 0:
-            return firstTagPart + self.componentValue + endTag
-
         if len(self.children) == 0:
-            indent = self.__renderIndentation()
-            if self.hasSlashAtEnd:
-                finalDecorator = "/>"
-            else:
-                finalDecorator = ">"
-            return f"{indent}<{self.__contentBase + self.__content}{finalDecorator}"
+            if self.componentValue != "":
+                return f"{indent}{openTag}>{self.componentValue}{endTag}"
+            return f"{indent}{openTag}{self._selfClosingDecorator()}"
 
-        endTag = f"\n{self.__renderIndentation()}" + endTag
-        buffer = ""
-        for child in self.children:
-            buffer += "\n" + child.genContent()
-        formattedValue = ""
-
-        return firstTagPart + formattedValue + buffer + endTag
+        parts = [f"{indent}{openTag}>"]
+        if self.componentText != "":
+            childIndent = self.__renderIndentation(self.__indentation + 1)
+            parts.append(f"{childIndent}{self.componentText}")
+        parts.extend(child.genContent() for child in self.children)
+        parts.append(f"{indent}{endTag}")
+        return "\n".join(parts)

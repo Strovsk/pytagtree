@@ -1,3 +1,3 @@
-from .Tag import Tag
+from .Tag import Raw, Tag
 
-__all__ = ["Tag"]
+__all__ = ["Raw", "Tag"]

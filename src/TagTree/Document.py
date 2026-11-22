@@ -21,6 +21,7 @@ class Document:
     def __getContent(self):
         buffer = ""
         for tag in self.items.values():
+            tag.applySettings(self.indentation, self.maxLineSize)
             buffer += tag.genContent()
             buffer += "\n"
         return buffer
@@ -30,7 +31,7 @@ class Document:
 
     def saveContentTo(self, filePath):
         try:
-            with open(filePath, "w") as file:
+            with open(filePath, "w", encoding="utf-8") as file:
                 file.write(self.__getContent())
         except OSError as error:
             raise RuntimeError(f"Cannot write file: {filePath}") from error
