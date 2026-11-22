@@ -31,6 +31,16 @@ Source = "https://github.com/Strovsk/pytagtree"
 requires = ["pdm-backend>=2.4"]
 build-backend = "pdm.backend"
 
+[dependency-groups]
+dev = [
+    "ruff>=0.17.6",
+    "debugpy>=1.8.22",
+]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 88
+
 [tool.pdm]
 distribution = true
 
@@ -39,3 +49,8 @@ package-dir = "src"
 
 [tool.pdm.scripts]
 test = { cmd = "python -m unittest discover -s . -p *_test.py -v", working_dir = "tests" }
+lint = "ruff check src tests"
+"lint:fix" = "ruff check --fix src tests"
+format = "ruff format src tests"
+"format:check" = "ruff format --check src tests"
+
