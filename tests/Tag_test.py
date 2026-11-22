@@ -3,12 +3,14 @@ import sys
 import os
 import unittest
 
-sys.path.append(os.path.abspath('../src'))
+sys.path.append(os.path.abspath("../src"))
 from TagTree.template.Tag import Tag
 
+
 def digestTestName(testName):
-    replaced = testName.replace('_', ' ')
-    return  replaced[0].upper() + replaced[1:]
+    replaced = testName.replace("_", " ")
+    return replaced[0].upper() + replaced[1:]
+
 
 def suite():
     s = unittest.TestSuite()
@@ -21,9 +23,9 @@ def suite():
     for test in testsClosedBreakTags().load_tests():
         s.addTest(testsClosedBreakTags(test))
 
-
     return s
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     runner = unittest.TextTestRunner()
     runner.run(suite())
