@@ -29,5 +29,8 @@ class Document:
         print(self.__getContent())
 
     def saveContentTo(self, filePath):
-        with open(filePath, "w") as file:
-            file.write(self.__getContent())
+        try:
+            with open(filePath, "w") as file:
+                file.write(self.__getContent())
+        except OSError as error:
+            raise RuntimeError(f"Cannot write file: {filePath}") from error

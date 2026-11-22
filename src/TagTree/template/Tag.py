@@ -53,7 +53,7 @@ class Tag(Component):
             return ""
 
         formattedParams = [f'{f[0]}="{f[1]}"' for f in self.params]
-        formattedParams.extend(self.noValueParams.copy())
+        formattedParams.extend(self.noValueParams)
 
         formattedParamsLen = len(" ".join(formattedParams)) + self.lenFormattedSize
         if formattedParamsLen >= self.maxLenLine:
