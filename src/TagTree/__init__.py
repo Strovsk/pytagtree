@@ -1,4 +1,4 @@
-from .template import Tag
 from .Document import Document
+from .template import Tag
 
-__all__ = ['Tag', 'Document']
+__all__ = ["Document", "Tag"]

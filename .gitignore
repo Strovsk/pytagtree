@@ -1,7 +1,12 @@
-.vscode
 .venv
 main.py
 Assets/Logo.ai
 **/__pycache__
 build
 dist
+
+# PDM / build
+.pdm-python
+.pdm-build/
+*.egg-info/
+__pypackages__/

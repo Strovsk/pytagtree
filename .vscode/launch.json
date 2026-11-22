@@ -1,0 +1,41 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: arquivo atual",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "Testes: todos",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "unittest",
+      "args": ["discover", "-v", "-s", ".", "-p", "*_test.py"],
+      "cwd": "${workspaceFolder}/tests",
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "Testes: arquivo atual",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "cwd": "${workspaceFolder}/tests",
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "Anexar (debugpy na porta 5678)",
+      "type": "debugpy",
+      "request": "attach",
+      "connect": { "host": "localhost", "port": 5678 },
+      "pathMappings": [
+        { "localRoot": "${workspaceFolder}", "remoteRoot": "." }
+      ]
+    }
+  ]
+}

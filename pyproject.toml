@@ -1,0 +1,74 @@
+[project]
+name = "TagTree"
+version = "1.0.3"
+description = "A Tag Dom Generator module"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Thiago S C Pereira", email = "strovsk@outlook.com" }]
+keywords = ["tag", "tree", "dom", "generator", "html", "markup", "xml", "tags", "xhtml", "xcell", "drawio"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Build Tools",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/Strovsk/pytagtree"
+Source = "https://github.com/Strovsk/pytagtree"
+"Bug Reports" = "https://github.com/Strovsk/pytagtree/issues"
+
+[build-system]
+requires = ["pdm-backend>=2.4"]
+build-backend = "pdm.backend"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.17.6",
+    "debugpy>=1.8.22",
+    "commitizen>=4.19.4",
+    "pre-commit>=4.6.2",
+]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 88
+
+[tool.ruff.lint.per-file-ignores]
+# Module names are part of the public API (TagTree, Tag, Document, Component)
+"src/TagTree/**" = ["N999"]
+"tests/**" = ["N999"]
+
+[tool.pdm]
+distribution = true
+
+[tool.pdm.build]
+package-dir = "src"
+
+[tool.pdm.scripts]
+test = { cmd = "python -m unittest discover -s . -p *_test.py -v", working_dir = "tests" }
+lint = "ruff check src tests"
+"lint:fix" = "ruff check --fix src tests"
+format = "ruff format src tests"
+"format:check" = "ruff format --check src tests"
+commit = "cz commit"
+bump = "cz bump"
+changelog = "cz changelog"
+hooks = "pre-commit install --install-hooks"
+
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+version_provider = "pep621"
+tag_format = "v$version"
+update_changelog_on_bump = true
+major_version_zero = false
