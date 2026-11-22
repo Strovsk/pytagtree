@@ -1,0 +1,94 @@
+name: Release
+
+# A cada push na main: calcula a versão pelos Conventional Commits, atualiza
+# pyproject.toml e CHANGELOG.md, cria o commit "bump:" e a tag, publica no
+# PyPI com pdm publish e cria o GitHub Release. Sem feat/fix/breaking change
+# desde a última tag, nada é publicado.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  bump:
+    name: Bump version
+    # o commit de bump é enviado com o GITHUB_TOKEN e não dispara workflows,
+    # mas o filtro evita qualquer loop
+    if: ${{ !startsWith(github.event.head_commit.message, 'bump:') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # enviar o commit de bump e a tag
+    outputs:
+      released: ${{ steps.bump.outputs.released }}
+      tag: ${{ steps.bump.outputs.tag }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - uses: pdm-project/setup-pdm@v4
+        with:
+          python-version: "3.12"
+          cache: true
+
+      - name: Install
+        run: pdm install
+
+      - name: Test
+        run: pdm run test
+
+      - name: Bump version and changelog
+        id: bump
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          BEFORE=$(pdm show --version)
+          # 21 = nenhum commit elegível para bump
+          pdm run cz --no-raise 21 bump --yes
+          AFTER=$(pdm show --version)
+          if [ "$BEFORE" != "$AFTER" ]; then
+            git push origin HEAD:main --follow-tags
+            echo "released=true" >> "$GITHUB_OUTPUT"
+            echo "tag=v$AFTER" >> "$GITHUB_OUTPUT"
+          else
+            echo "released=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  publish:
+    name: Publish to PyPI
+    needs: bump
+    if: ${{ needs.bump.outputs.released == 'true' }}
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      contents: write # criar o GitHub Release
+      id-token: write # trusted publishing (OIDC), sem token salvo no repo
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ needs.bump.outputs.tag }}
+          fetch-depth: 0
+
+      - uses: pdm-project/setup-pdm@v4
+        with:
+          python-version: "3.12"
+          cache: true
+
+      - name: Install
+        run: pdm install
+
+      - name: Build and publish
+        run: pdm publish
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ needs.bump.outputs.tag }}
+        run: |
+          pdm run cz changelog "$TAG" --dry-run > RELEASE_NOTES.md
+          gh release create "$TAG" dist/* --title "$TAG" --notes-file RELEASE_NOTES.md

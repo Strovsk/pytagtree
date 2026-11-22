@@ -35,10 +35,10 @@ Python files with Ruff and reject commit messages that are not Conventional Comm
 Versions follow [SemVer](https://semver.org/) and are derived from the commits since the last tag:
 `fix` bumps the patch, `feat` bumps the minor, and a breaking change bumps the major.
 
-```sh
-pdm run bump                 # updates pyproject.toml and CHANGELOG.md, commits and tags vX.Y.Z
-git push --follow-tags       # the tag triggers the Release workflow
-```
+Releases are fully automated by the Release workflow (`.github/workflows/release.yml`). On every
+push to `main` it runs the tests and `cz bump`, which updates the version in `pyproject.toml` and
+`CHANGELOG.md`, creates the `bump:` commit and the `vX.Y.Z` tag, and pushes them. It then publishes
+to PyPI with `pdm publish` and creates the GitHub Release. If there is no `feat`, `fix` or breaking
+change since the last tag, nothing is released.
 
-The Release workflow checks that the tag matches the version, runs the tests, publishes to PyPI
-with `pdm publish` and creates the GitHub Release with the changelog of that version.
+Do not run `pdm run bump` locally; `pdm run changelog --dry-run` previews the next entry.
